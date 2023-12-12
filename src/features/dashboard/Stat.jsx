@@ -1,0 +1,58 @@
+import styled from "styled-components";
+
+const StyledStat = styled.div`
+  /* Box */
+  background-color: var(--color-gray-0);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 1rem;
+  row-gap: 0.25rem;
+`;
+
+const Icon = styled.div`
+  grid-row: 1 / -1;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--color-${(props) => props.color}-1);
+
+  & svg {
+    width: 2rem;
+    height: 2rem;
+    color: var(--color-${(props) => props.color}-7);
+  }
+`;
+
+const Title = styled.h5`
+  align-self: end;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25px;
+  font-weight: 600;
+  color: var(--color-gray-5);
+`;
+
+const Value = styled.p`
+  font-size: 1rem;
+  line-height: 1;
+  font-weight: 500;
+`;
+
+function Stat({ icon, title, value, color }) {
+  return (
+    <StyledStat>
+      <Icon color={color}>{icon}</Icon>
+      <Title>{title}</Title>
+      <Value>{value}</Value>
+    </StyledStat>
+  );
+}
+
+export default Stat;
